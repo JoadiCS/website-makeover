@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Detail & Ceramics | Phoenix Mobile Auto Detailing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d2340;
+            --secondary: #1e3a5f;
+            --accent: #4a90e2;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --text-gray: #4a5568;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(13, 35, 64, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .book-btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .book-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 35, 64, 0.2);
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 85px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(74, 144, 226, 0.1) 100%);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .discount-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.65rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .hero-img {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .hero-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--light-gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(13, 35, 64, 0.08);
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(13, 35, 64, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        /* Packages */
+        .packages {
+            background: var(--white);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 16px rgba(13, 35, 64, 0.08);
+            transition: all 0.3s;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(13, 35, 64, 0.12);
+            border-color: var(--accent);
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .package-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .package-features {
+            list-style: none;
+        }
+
+        .package-features li {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .featured {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.15);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ceramic Section */
+        .ceramic {
+            background: var(--light-gray);
+        }
+
+        .ceramic-intro {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(13, 35, 64, 0.06);
+            margin-bottom: 3rem;
+        }
+
+        .ceramic-intro p {
+            line-height: 1.9;
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(13, 35, 64, 0.1);
+        }
+
+        /* Services */
+        .services {
+            background: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.25rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(13, 35, 64, 0.08);
+            transition: all 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(13, 35, 64, 0.12);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 0.98rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.6rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .service-list li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Tint Section */
+        .tint {
+            background: var(--white);
+        }
+
+        .tint-intro {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(13, 35, 64, 0.06);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .tint-intro p {
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .tint-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tint-card {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(13, 35, 64, 0.08);
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .tint-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(13, 35, 64, 0.12);
+        }
+
+        .tint-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.75rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .tint-featured {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.15);
+        }
+
+        /* Features */
+        .features {
+            background: var(--light-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.25rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(13, 35, 64, 0.1);
+            transform: translateY(-6px);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title,
+        .contact .section-subtitle {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .cta-text {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1a2e;
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        .disclaimer strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .packages-grid,
+            .services-grid,
+            .tint-grid,
+            .gallery-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://static.wixstatic.com/media/cf0966_5e5930e3ea314e97b6bab3d7a01d2f7a~mv2.png/v1/fill/w_406,h_309,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/cf0966_5e5930e3ea314e97b6bab3d7a01d2f7a~mv2.png" alt="Armstrong Detail & Ceramics">
+                <span class="logo-text">Armstrong Detail & Ceramics</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#gallery">Portfolio</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="book-btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="discount-badge">🎉 25% OFF FIRST TIME CUSTOMERS</div>
+                <h1>Drive Like It's New</h1>
+                <p>Phoenix's premier mobile auto detailing service. We bring professional quality and certified expertise directly to your door. From daily drivers to luxury vehicles, we make every car shine.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Book Your Appointment</a>
+                    <a href="tel:6236407805" class="btn btn-secondary">Call (623) 640-7805</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img"><div style="width:100%;height:220px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:16px;"></div></div>
+                <div class="hero-img"><div style="width:100%;height:220px;background:linear-gradient(135deg,#f093fb,#f5576c);border-radius:16px;"></div></div>
+                <div class="hero-img"><div style="width:100%;height:220px;background:linear-gradient(135deg,#4facfe,#00f2fe);border-radius:16px;"></div></div>
+                <div class="hero-img"><div style="width:100%;height:220px;background:linear-gradient(135deg,#43e97b,#38f9d7);border-radius:16px;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <p class="section-subtitle">From exotic sports cars to luxury SUVs and motorcycles - we detail them all to perfection</p>
+            <div class="gallery-grid">
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#FF6B6B,#FF8E53);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#1A1A1A,#2D3748);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#C0C0C0,#8B8B8B);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#F5F5F5,#FFFFFF);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#4A90E2,#5DADE2);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#F39C12,#E67E22);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#2C3E50,#34495E);"></div></div>
+                <div class="gallery-item"><div style="width:100%;height:280px;background:linear-gradient(135deg,#8E44AD,#9B59B6);"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <h2 class="section-title">Detailing Packages</h2>
+            <p class="section-subtitle">Professional interior and exterior detailing packages tailored to your vehicle's needs</p>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Basic Wash</h3>
+                        <div class="package-price">$65-$95</div>
+                    </div>
+                    <ul class="package-features">
+                        <li>Handwash</li>
+                        <li>Bug Removal</li>
+                        <li>Wheel Cleaning</li>
+                        <li>Tires Dressed</li>
+                        <li>Door Jams</li>
+                        <li>Detail Spray</li>
+                        <li>Light Vacuum</li>
+                        <li>Interior Wipe Down</li>
+                        <li>Window Cleaning</li>
+                        <li>Free Car Care Items</li>
+                    </ul>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="featured-badge">MOST POPULAR</div>
+                    <div class="package-header">
+                        <h3 class="package-name">Mini Detail</h3>
+                        <div class="package-price">$125-$175</div>
+                    </div>
+                    <ul class="package-features">
+                        <li>Handwash</li>
+                        <li>Bug Removal</li>
+                        <li>Wheel Cleaning</li>
+                        <li>Tire Dressings</li>
+                        <li>Door Jams</li>
+                        <li>Spray Wax Application</li>
+                        <li>Interior Detail</li>
+                        <li>Full Vacuum</li>
+                        <li>Light Stain Cleaning</li>
+                        <li>Window Cleaning</li>
+                        <li>Free Car Care Items</li>
+                    </ul>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Full Detail</h3>
+                        <div class="package-price">$225-$350</div>
+                    </div>
+                    <ul class="package-features">
+                        <li>Handwash</li>
+                        <li>Bug/Tar Removal</li>
+                        <li>Wheel Cleaning</li>
+                        <li>Tire Dressings</li>
+                        <li>Wax Application</li>
+                        <li>Exterior Plastic Conditioning</li>
+                        <li>Interior Deep Clean</li>
+                        <li>Full Vacuum</li>
+                        <li>Shampoo Mats, Carpet & Seats</li>
+                        <li>Leather/Vinyl Conditioning</li>
+                        <li>Window Cleaning</li>
+                        <li>Free Car Care Items</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ceramic Coating -->
+    <section class="ceramic" id="ceramic">
+        <div class="container">
+            <h2 class="section-title">Ceramic Coating</h2>
+            <p class="section-subtitle">Years of protection, not months. The ultimate shield for your vehicle's paint</p>
+            
+            <div class="ceramic-intro">
+                <p>Ceramic coatings chemically bond to your paint's finish, providing superior protection against UV rays, bird droppings, water spots, and harsh chemicals used by automatic car washes. Unlike waxes that last 1-3 months or polymer sealants lasting 4-6 months, ceramic coatings provide years of protection.</p>
+                <p>The coating adds an incredibly deep glossy shine with self-cleaning and healing effects, making it more difficult for dirt and contaminants to adhere to your vehicle. Washing and maintaining your vehicle becomes easy and enjoyable, while you stay better equipped to handle environmental challenges your vehicle faces every day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Don't just take our word for it - hear from satisfied customers across Phoenix</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div style="color: #FFB800; font-size: 1.25rem; margin-bottom: 0.5rem;">★★★★★</div>
+                    <h4 style="color: var(--primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Elaina Sullivan</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 1rem;">2 months ago</p>
+                    <p style="line-height: 1.7; color: var(--text-gray);">"I had an exceptional experience with this car detailing service! He came to my house and was very responsive when setting up an appointment. From start to finish, he was very professional, thorough, and went above and beyond."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div style="color: #FFB800; font-size: 1.25rem; margin-bottom: 0.5rem;">★★★★★</div>
+                    <h4 style="color: var(--primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">Colin Petranu</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 1rem;">2 months ago</p>
+                    <p style="line-height: 1.7; color: var(--text-gray);">"We have an Infiniti QX60 with tan interior and 3 young kids and 2 dogs, so needless to say, it needed a good cleaning. The interior detailing went above and beyond our expectations. It looks and feels like new!"</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div style="color: #FFB800; font-size: 1.25rem; margin-bottom: 0.5rem;">★★★★★</div>
+                    <h4 style="color: var(--primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 
